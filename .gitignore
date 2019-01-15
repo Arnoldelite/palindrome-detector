@@ -1,0 +1,17 @@
+# dependencies
+node_modules
+coverage
+.cache
+logs
+false
+
+# app
+
+# server
+server/app
+server/apidoc/*
+server/apidoc/
+
+# misc
+yarn.lock
+.DS_Store

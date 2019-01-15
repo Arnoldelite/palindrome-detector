@@ -1,0 +1,19 @@
+.app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  &__layout {
+    height: 100%;
+    background-color: white;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: white;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 20px 0 20px;
+  }
+}

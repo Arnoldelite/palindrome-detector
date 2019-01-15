@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "watch": ["server/index.js", "server/src/**/*"],
+  "ignore": ["server/**/*.test.js"]
+}
