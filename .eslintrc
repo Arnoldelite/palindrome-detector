@@ -20,13 +20,16 @@
     "jest/globals": true,
     "beforeEach": true,
     "jest": true,
-    "beforeAll": true
+    "beforeAll": true,
+    "Event": true
   },
   "rules": {
     "arrow-parens": 0,
     "global-require": 0,
     "new-cap": 0,
     "import/no-mutable-exports": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/no-access-state-in-setstate": 0,
     "import/no-named-as-default": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/interactive-supports-focus": 0,

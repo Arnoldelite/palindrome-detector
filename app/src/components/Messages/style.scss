@@ -1,0 +1,11 @@
+.message {
+  height: 100%;
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  &__list {
+    width: 80%;
+    overflow: auto;
+  }
+}

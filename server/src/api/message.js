@@ -14,6 +14,7 @@ export class Message {
   async getMessages() {
     try {
       const query = this.query()
+      query.descending('createdAt')
       const messages = await query.find()
       return messages.map(o => o.toJSON())
     } catch (error) {

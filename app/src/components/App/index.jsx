@@ -1,44 +1,25 @@
 import React from 'react'
-import { Layout } from 'antd'
 import { observer } from 'mobx-react'
 import './style.scss'
-import Particles from 'react-particles-js'
-
-const { Content } = Layout
+import Messages from '../Messages'
+import MessageInput from '../MessageInput'
+import EditModal from '../EditModal'
+import { store } from '../..'
+import { list } from '../../actions'
 
 @observer
 class App extends React.Component {
+  async componentDidMount() {
+    await list()
+  }
+
   render() {
     return (
-      <Layout className="app">
-        <Layout className="app__layout">
-          <Content className="app__content">
-            <div>
-              sfssdff
-              <Particles
-                params={{
-                  particles: {
-                    number: {
-                      value: 50,
-                    },
-                    size: {
-                      value: 3,
-                    },
-                  },
-                  interactivity: {
-                    events: {
-                      onhover: {
-                        enable: true,
-                        mode: 'repulse',
-                      },
-                    },
-                  },
-                }}
-              />
-            </div>
-          </Content>
-        </Layout>
-      </Layout>
+      <div className="app">
+        <MessageInput />
+        <Messages messages={store.messages} isLoading={store.isLoading} />
+        <EditModal message={store.messageInput} />
+      </div>
     )
   }
 }

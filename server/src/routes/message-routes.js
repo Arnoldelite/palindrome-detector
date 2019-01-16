@@ -34,15 +34,17 @@ router.post(
       .isString()
       .not()
       .isEmpty()
-      .withMessage('Missing Missing Message content'),
+      .withMessage('Missing Message content'),
   ],
   async (req, res) => {
+    console.log(req.body)
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
       return res.status(422).send({ errors: errors.array() })
     }
     try {
       const result = await message.saveMessage(req.body)
+      console.log('reqiest body >>', req.body)
       res.status(200).send(result)
     } catch (error) {
       res.status(400).send(error)
@@ -76,27 +78,13 @@ router.put(
   },
 )
 
-router.delete(
-  '/api/v1/message/remove',
-  [
-    body('id')
-      .isString()
-      .not()
-      .isEmpty()
-      .withMessage('Message id is required'),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req)
-    if (!errors.isEmpty()) {
-      return res.status(422).send({ errors: errors.array() })
-    }
-    try {
-      const result = await message.deleteMessage(req.body)
-      res.status(200).send(result)
-    } catch (error) {
-      res.status(400).send(error)
-    }
-  },
-)
+router.delete('/api/v1/message/remove/:id', async (req, res) => {
+  try {
+    const result = await message.deleteMessage(req.params.id)
+    res.status(200).send(result)
+  } catch (error) {
+    res.status(400).send(error)
+  }
+})
 
 export default router

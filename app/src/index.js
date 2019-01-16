@@ -1,22 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'mobx-react'
-import stores from './stores'
-import { history } from './stores/routeStore'
+import Store from './store'
 import App from './components/App'
 import 'antd/dist/antd.css'
 import './style/style.scss'
 
+export const store = new Store()
+
 function Index() {
   return (
-    <Provider {...stores}>
+    <Provider store={store}>
       <div className="index">
-        <Router history={history}>
-          <Switch>
-            <Route path="/" component={App} />
-          </Switch>
-        </Router>
+        <App />
       </div>
     </Provider>
   )
