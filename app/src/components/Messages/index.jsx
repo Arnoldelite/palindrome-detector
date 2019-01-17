@@ -3,13 +3,15 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 import { List, Skeleton, Tag } from 'antd'
 import { store } from '../..'
-import { remove } from '../../actions'
+import { remove, get } from '../../actions'
 import './style.scss'
+// import { get } from '../../actions'
 
 @observer
 class Messages extends React.Component {
-  editMessage(item) {
+  async editMessage(item) {
     store.setMessage(item)
+    await get(item.objectId)
     store.showEditModal(true)
   }
 

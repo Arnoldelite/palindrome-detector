@@ -18,7 +18,7 @@ class App extends React.Component {
       <div className="app">
         <MessageInput />
         <Messages messages={store.messages} isLoading={store.isLoading} />
-        <EditModal message={store.messageInput} />
+        <EditModal message={store.messageInput} messagecontent={store.messageContent} />
       </div>
     )
   }

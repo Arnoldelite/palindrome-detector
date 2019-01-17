@@ -15,6 +15,9 @@ export default class Store {
   @observable
   isEditModalVisible
 
+  @observable
+  messageContent
+
   constructor() {
     this.init()
   }
@@ -24,6 +27,7 @@ export default class Store {
     this.messages = observable.array([])
     this.isLoading = false
     this.messageInput = observable.object({})
+    this.messageContent = observable.object({})
   }
 
   @action
@@ -43,8 +47,7 @@ export default class Store {
 
   @action
   getMessage = data => {
-    // this.messageInput = data
-    console.log('getMessage >>', data)
+    this.messageContent = data
   }
 
   @action
