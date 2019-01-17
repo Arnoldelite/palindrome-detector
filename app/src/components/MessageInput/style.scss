@@ -1,7 +1,9 @@
 .message-input {
-  width: auto;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
   height: 50px;
-  margin: 20px;
+  margin: 60px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -9,5 +11,6 @@
 
   &__save {
     margin-left: 10px;
+    justify-content: center;
   }
 }

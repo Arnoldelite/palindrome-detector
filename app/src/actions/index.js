@@ -40,13 +40,15 @@ export async function list() {
   }
 }
 
-export function get() {
+export async function get(id) {
   try {
-    console.log('get')
+    store.setIsLoading(true)
+    const response = await axios.get(`/api/v1/message/${id}`)
+    store.getMessage(response.data)
   } catch (e) {
-    console.log(e)
+    apiError(e)
   } finally {
-    console.log('done')
+    store.setIsLoading(false)
   }
 }
 

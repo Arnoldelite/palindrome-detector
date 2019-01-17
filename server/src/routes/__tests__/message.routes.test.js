@@ -36,11 +36,11 @@ describe('Message', () => {
       messageAPI.getMessage = jest.fn()
       messageAPI.getMessage.mockReturnValue(message1)
       app
-        .get(`/api/v1/message/idMan`)
+        .get(`/api/v1/message/${message1.id}`)
         .expect(200)
         .end((err, res) => {
           if (err) throw done(err)
-          expect(messageAPI.getMessage).toHaveBeenCalledWith('idMan')
+          expect(messageAPI.getMessage).toHaveBeenCalledWith(message1.id)
           expect(res.body).toEqual(message1)
           done()
         })
@@ -51,7 +51,7 @@ describe('Message', () => {
         throw new Error()
       })
       app
-        .get(`/api/v1/message/idMan`)
+        .get(`/api/v1/message/${message2.id}`)
         .expect(400)
         .end(err => {
           if (err) throw done(err)
@@ -126,32 +126,28 @@ describe('Message', () => {
   })
 
   describe('/api/v1/message/remove', () => {
-    test('Remove / Destroy message success', done => {
-      messageAPI.deleteMessage = jest.fn()
-      messageAPI.deleteMessage.mockReturnValue(message1)
-      const data = {
-        id: 'booeqweqwe',
-      }
+    test('Delete message error catch missing params', done => {
       app
-        .delete(`/api/v1/message/remove`)
-        .send(data)
-        .expect(200)
-        .end((err, res) => {
+        .delete(`/api/v1/message/remove/${message2.id}`)
+        .send(message2.id)
+        .expect(422)
+        .end(err => {
           if (err) throw done(err)
-          expect(messageAPI.deleteMessage).toHaveBeenCalledWith(data)
-          expect(res.body).toEqual(message1)
           done()
         })
     })
 
-    test('Delete user error catch missing params', done => {
-      const data = {}
+    test('Remove / Destroy message success', done => {
+      messageAPI.deleteMessage = jest.fn()
+      messageAPI.deleteMessage.mockReturnValue(message1)
       app
-        .delete(`/api/v1/message/remove`)
-        .send(data)
-        .expect(422)
-        .end(err => {
+        .delete(`/api/v1/message/remove/${message1.id}`)
+        .send(message1)
+        .expect(200)
+        .end((err, res) => {
           if (err) throw done(err)
+          expect(messageAPI.deleteMessage).toHaveBeenCalledWith(message1.id)
+          expect(res.body).toEqual(message1)
           done()
         })
     })

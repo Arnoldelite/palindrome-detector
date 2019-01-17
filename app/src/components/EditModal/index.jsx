@@ -2,6 +2,7 @@ import React from 'react'
 import { Modal } from 'antd'
 import { observer } from 'mobx-react'
 import PropTypes from 'prop-types'
+import Particles from 'react-particles-js'
 import MessageInput from '../MessageInput'
 import { store } from '../..'
 import './style.scss'
@@ -18,7 +19,28 @@ class EditModal extends React.Component {
         visible={store.isEditModalVisible}
         footer={null}
       >
-        <MessageInput message={this.props.message} />
+        <MessageInput className="input" message={this.props.message} />
+        <Particles
+          className="particles"
+          params={{
+            particles: {
+              number: {
+                value: 50,
+              },
+              size: {
+                value: 3,
+              },
+            },
+            interactivity: {
+              events: {
+                onhover: {
+                  enable: true,
+                  mode: 'repulse',
+                },
+              },
+            },
+          }}
+        />
       </Modal>
     )
   }

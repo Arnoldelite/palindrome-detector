@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
-import { Input, Button } from 'antd'
+import { Input, Button, Icon } from 'antd'
 import { store } from '../..'
 import { save } from '../../actions'
 import './style.scss'
@@ -32,21 +32,15 @@ class MessageInput extends React.Component {
     return (
       <div className="message-input">
         <Input
-          size="default"
           placeholder="Enter message"
           allowClear
           value={this.state.content}
           onChange={e => this.setMessage({ content: e.target.value })}
           onPressEnter={() => this.saveMessage()}
         />
-        <Button
-          size="large"
-          className="message-input__save"
-          type="primary"
-          onClick={() => this.saveMessage()}
-        >
-          Save
-        </Button>
+        {/* <Button className="message-input__save" type="primary" onClick={() => this.saveMessage()}>
+          Send <Icon type="right" />
+        </Button> */}
       </div>
     )
   }
