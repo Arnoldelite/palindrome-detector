@@ -1,16 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
-import { List, Skeleton, Tag } from 'antd'
+import { List, Skeleton, Icon } from 'antd'
+import IsPalindrome from '../IsPalindrome'
 import { store } from '../..'
 import { remove, get } from '../../actions'
 import './style.scss'
-// import { get } from '../../actions'
 
 @observer
 class Messages extends React.Component {
   async editMessage(item) {
-    store.setMessage(item)
     await get(item.objectId)
     store.showEditModal(true)
   }
@@ -27,17 +26,23 @@ class Messages extends React.Component {
             <List.Item
               key={item.objectId}
               actions={[
-                <a onClick={() => this.editMessage(item)}>edit</a>,
-                <a onClick={() => remove(item.objectId)}>delete</a>,
+                <Icon
+                  type="edit"
+                  style={{ color: '#08c' }}
+                  onClick={() => this.editMessage(item)}
+                  theme="outlined"
+                />,
+                <Icon
+                  type="delete"
+                  style={{ color: '#08c' }}
+                  onClick={() => remove(item)}
+                  theme="outlined"
+                />,
               ]}
             >
               <Skeleton title={false} loading={this.props.isLoading} active>
                 <List.Item.Meta title={item.content} />
-                {item.isPalindrome ? (
-                  <Tag color="green">Palindrome</Tag>
-                ) : (
-                  <Tag color="pink">Not Palindrome</Tag>
-                )}
+                <IsPalindrome isPalindrome={item.isPalindrome} />
               </Skeleton>
             </List.Item>
           )}

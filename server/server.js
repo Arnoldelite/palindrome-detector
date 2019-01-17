@@ -1,4 +1,3 @@
-import server from '.'
+import server, { port } from '.'
 
-const port = 3000
-server.listen(process.env.PORT || port, () => console.log(`Palindrome-detector is running`))
+server.listen(process.env.PORT || port, () => console.log(`Palindrome-detector is running on port: ${port}`))

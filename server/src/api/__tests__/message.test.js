@@ -1,6 +1,11 @@
 import Parse from 'parse/node'
-import { initializeParse } from '../../..'
 import message from '../message'
+
+const testParseServer = async () => {
+  Parse.initialize('appId', 'masterKey')
+  Parse.masterKey = 'masterKey'
+  Parse.serverURL = `http://localhost:1337/parse`
+}
 
 const dropMessageTable = async () => {
   const messageTable = new Parse.Schema('Message')
@@ -11,17 +16,13 @@ const testMessage = {
   content: 'racecar',
 }
 
-const testMessage1 = {
-  content: 'level',
-}
-
 const testMessage2 = {
   content: 'Mom',
 }
 
 describe('User', () => {
   beforeAll(async done => {
-    initializeParse()
+    await testParseServer()
     done()
   })
   afterAll(async done => {

@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.11);
+  &__left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      width: 150px;
+      padding-left: 40px;
+    }
+  }
+  &__right {
+    margin: 20px;
+  }
+}

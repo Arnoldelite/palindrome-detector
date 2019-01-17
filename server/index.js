@@ -2,36 +2,45 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import Parse from 'parse/node'
 import path from 'path'
 import serveStatic from 'serve-static'
 import messageRoutes from './src/routes/message-routes'
 
+const ParseServer = require('parse-server').ParseServer
 const ParseDashboard = require('parse-dashboard')
 
+export const port = process.env.PORT ? process.env.PORT : 3000
 const app = express()
 export const router = express.Router()
-const jsonParser = bodyParser.json({
-  type: 'application/json',
-})
+const jsonParser = bodyParser.json({ type: 'application/json' })
 
-export const initializeParse = () => {
-  Parse.initialize('appId', 'masterKey')
-  Parse.serverURL = 'http://localhost:1337/parse'
-  Parse.masterKey = 'masterKey'
-  return Parse
+console.log(process.env.PROD)
+const databaseURI = process.env.PROD
+  ? 'mongodb://shuttle-up:shuttle-up!0@ds127644.mlab.com:27644/shuttle-up'
+  : 'mongodb://localhost:27017/palindrome-detector'
+
+export const parseConfig = {
+  appId: 'myAppId',
+  masterKey: 'myMasterKey',
+  databaseURI,
+  serverURL: process.env.PROD ? `http://localhost:${port}/parse` : `http://localhost:${port}/parse`,
 }
 
-initializeParse()
+const parseServer = new ParseServer({
+  databaseURI,
+  appId: parseConfig.appId,
+  masterKey: parseConfig.masterKey,
+  serverURL: parseConfig.serverURL,
+})
 
 const parseDashboard = new ParseDashboard(
   {
     apps: [
       {
-        serverURL: 'http://localhost:1337/parse',
-        appId: 'appId',
-        masterKey: 'masterKey',
-        appName: 'dev',
+        serverURL: '/parse',
+        appId: parseConfig.appId,
+        masterKey: parseConfig.masterKey,
+        appName: 'Palindrome Detector',
       },
     ],
   },
@@ -44,7 +53,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
 app.use(morgan('tiny'))
-app.use('/dashboard', parseDashboard)
+
+if (process.env.NODE_ENV !== 'test') {
+  app.use('/parse', parseServer)
+  app.use('/dashboard', parseDashboard)
+}
 
 // Statics
 app.use('/app', serveStatic('./server/app/'))

@@ -1,34 +1,32 @@
-Qlik palindrome-detector
-=====================
+# Palindrome Detector
 
-## Dev-Setup
-## Commands
-  `confirm` docker installed locally and running
+- An application to store messages and detect palindromes.
+- Access deployed app on (Live App)[http://35.182.44.167/]
 
-  `npm install` install application dependencies
+## Depenedencies
 
+- Docker
+- Node version >= 10
 
-  `npm start` Start application in browser,  start server, connects to MongoDB database.
+## Dev
 
+- Install dependencies `npm install`
+- Start app locally `npm start`
+- App accessible on (Dev)[http://localhost:3000]
 
-  `npm run test-watch` run server integration tests PS, must not have any other instance of application running.
+## Test
 
+- Run test `npm run test`
 
-## Deploy
-  `npm run docker_build` builds application for deploy to docker repo, tags on docker repo with "latest" and push to dockerhub   Connects to MongoDB database.
+## Tech Stack
 
+- UI: React
+- Server: Node.js Express.js
+- Database: Mongodb
+- Deploy: AWS
 
-  `npm run build-web` Build app for browser
+## Deployment
 
-## About
-
-This project takes an approach that uses react for client side rendering, with mobx for state management and  node for server implementation and docker for building and deploying to Heroku.
-
-The goal with the project is to design an application that detects palindromes according to specifications received prior to due date in separate email.
-
-This is possible thanks to
-
-
-[Docker](https://docs.docker.com/docker-for-mac/install/),
-
-[Deployed Application](Sample-env.nc3kdmcppu.us-west-2.elasticbeanstalk.com),
+- Sign up for AWS and configure credentials [https://docs.docker.com/machine/examples/aws/]
+- Create docker machine `docker-machine create --driver amazonec2 --amazonec2-open-port 80 --amazonec2-region ca-central-1 palindrome-detector`
+- Deploy to AWS EC2 docker machine `npm run deploy`

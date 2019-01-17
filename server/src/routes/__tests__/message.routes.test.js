@@ -6,6 +6,7 @@ const app = request(server)
 
 const message1 = {
   id: 'booeqweqwe',
+  objectId: 'booeqweqwe',
   content: 'racecar',
   isPalindrome: true,
 }

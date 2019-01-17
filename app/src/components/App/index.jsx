@@ -1,6 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import './style.scss'
+import Header from '../Header'
 import Messages from '../Messages'
 import MessageInput from '../MessageInput'
 import EditModal from '../EditModal'
@@ -16,9 +17,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
+        <Header />
         <MessageInput />
         <Messages messages={store.messages} isLoading={store.isLoading} />
-        <EditModal message={store.messageInput} messagecontent={store.messageContent} />
+        <EditModal message={store.messageInput} />
       </div>
     )
   }

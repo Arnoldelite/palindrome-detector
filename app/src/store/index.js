@@ -46,11 +46,6 @@ export default class Store {
   }
 
   @action
-  getMessage = data => {
-    this.messageContent = data
-  }
-
-  @action
   showEditModal = data => {
     this.isEditModalVisible = data
   }

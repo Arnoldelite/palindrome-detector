@@ -42,30 +42,17 @@ export async function list() {
 
 export async function get(id) {
   try {
-    store.setIsLoading(true)
     const response = await axios.get(`/api/v1/message/${id}`)
-    store.getMessage(response.data)
+    store.setMessage(response.data)
   } catch (e) {
     apiError(e)
-  } finally {
-    store.setIsLoading(false)
   }
 }
 
-export function edit() {
+export async function remove(message) {
   try {
-    console.log('edit')
-  } catch (e) {
-    console.log(e)
-  } finally {
-    console.log('done')
-  }
-}
-
-export async function remove(id) {
-  try {
-    await axios.delete(`/api/v1/message/remove/${id}`)
-    store.deleteMessage(id)
+    await axios.delete(`/api/v1/message/remove/${message.objectId}`, { data: message })
+    store.deleteMessage(message.objectId)
   } catch (e) {
     apiError(e)
   }

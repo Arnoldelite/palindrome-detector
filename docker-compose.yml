@@ -1,5 +1,5 @@
-###########################################################################
-#                           Palindrome-Detector                           #
+##########################################################################
+#                           Palindrome-Detector                          #
 ##########################################################################
 version: "3"
 services:
@@ -12,13 +12,16 @@ services:
     ports:
       - 27017:27017
     command: mongod --smallfiles --logpath=/dev/null
-
-  parse-server:
-    image: "parseplatform/parse-server:3.1.1"
-    ports:
-      - 1337:1337
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PROD=true
+      - PORT=80
     depends_on:
       - mongodb
     links:
       - mongodb
-    command: --appId appId --masterKey masterKey --databaseURI 'mongodb://mongodb:27017/palindrome-detector'
+    ports:
+      - 80:80

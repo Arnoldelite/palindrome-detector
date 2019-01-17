@@ -79,7 +79,7 @@ router.put(
 router.delete(
   '/api/v1/message/remove/:id',
   [
-    body('id')
+    body('objectId')
       .not()
       .isEmpty()
       .withMessage('Missing id of Message to be deleted'),
