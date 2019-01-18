@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 import { Input, Button } from 'antd'
 import { store } from '../..'
-import { save } from '../../actions'
+import { save, update } from '../../actions'
 import './style.scss'
 
 @observer
@@ -20,7 +20,11 @@ class MessageInput extends React.Component {
   saveMessage() {
     if (this.state.content) {
       const { objectId, content } = this.state
-      save({ objectId, content })
+      if (objectId) {
+        update({ objectId, content })
+      } else {
+        save({ content })
+      }
       store.showEditModal(false)
       this.setState({ objectId: null, content: '' })
     }

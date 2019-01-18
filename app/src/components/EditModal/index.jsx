@@ -15,7 +15,7 @@ class EditModal extends React.Component {
       <Modal
         className="edit-modal"
         destroyOnClose
-        title={<IsPalindrome isPalindrome={store.messageContent.isPalindrome} />}
+        title={<IsPalindrome isPalindrome={store.messageInput.isPalindrome} />}
         onCancel={() => store.showEditModal(false)}
         visible={store.isEditModalVisible}
         footer={null}

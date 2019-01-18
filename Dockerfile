@@ -10,5 +10,6 @@ COPY ./package.json /package.json
 
 RUN npm install --silent
 RUN npm run build-app
+RUN npm run apidoc
 
 CMD npm run build-server

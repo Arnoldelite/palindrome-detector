@@ -18,11 +18,16 @@ export function apiError(err) {
 export async function save(message) {
   try {
     const response = await axios.post(`/api/v1/message`, message)
-    if (message.objectId) {
-      store.updateMessage(response.data)
-    } else {
-      store.addMessage(response.data)
-    }
+    store.addMessage(response.data)
+  } catch (e) {
+    apiError(e)
+  }
+}
+
+export async function update(message) {
+  try {
+    const response = await axios.put(`/api/v1/message`, message)
+    store.updateMessage(response.data)
   } catch (e) {
     apiError(e)
   }
@@ -51,7 +56,7 @@ export async function get(id) {
 
 export async function remove(message) {
   try {
-    await axios.delete(`/api/v1/message/remove/${message.objectId}`, { data: message })
+    await axios.delete(`/api/v1/message/${message.objectId}`, { data: message })
     store.deleteMessage(message.objectId)
   } catch (e) {
     apiError(e)

@@ -51,13 +51,13 @@ router.post(
 )
 
 router.put(
-  '/api/v1/message/update',
+  '/api/v1/message',
   [
     body('content')
       .not()
       .isEmpty()
       .withMessage('Missing content'),
-    body('id')
+    body('objectId')
       .not()
       .isEmpty()
       .withMessage('Missing message id'),
@@ -68,7 +68,7 @@ router.put(
       return res.status(422).send({ errors: errors.array() })
     }
     try {
-      const result = await message.saveMessage(req.body.id, req.body.content)
+      const result = await message.saveMessage(req.body)
       res.status(200).send(result)
     } catch (error) {
       res.status(400).send(error)
@@ -77,7 +77,7 @@ router.put(
 )
 
 router.delete(
-  '/api/v1/message/remove/:id',
+  '/api/v1/message/:id',
   [
     body('objectId')
       .not()

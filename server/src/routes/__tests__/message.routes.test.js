@@ -93,21 +93,21 @@ describe('Message', () => {
     })
   })
 
-  describe('/api/v1/message/update', () => {
+  describe('/api/v1/message', () => {
     test('Update user success', done => {
       messageAPI.updateMessage = jest.fn()
       messageAPI.updateMessage.mockReturnValue(message1)
       const message = {
-        id: 'booeqweqwe',
+        objectId: 'booeqweqwe',
         content: 'booking',
       }
       app
-        .put(`/api/v1/message/update`)
+        .put(`/api/v1/message`)
         .send(message)
         .expect(200)
         .end((err, res) => {
           if (err) throw done(err)
-          expect(messageAPI.saveMessage).toHaveBeenCalledWith(message.id, message.content)
+          expect(messageAPI.saveMessage).toHaveBeenCalledWith(message)
           expect(res.body).toEqual(message1)
           done()
         })
@@ -116,7 +116,7 @@ describe('Message', () => {
     test('Update message error catch missing params', done => {
       const message = {}
       app
-        .put(`/api/v1/message/update`)
+        .put(`/api/v1/message`)
         .send(message)
         .expect(422)
         .end(err => {
@@ -126,10 +126,10 @@ describe('Message', () => {
     })
   })
 
-  describe('/api/v1/message/remove', () => {
+  describe('/api/v1/message', () => {
     test('Delete message error catch missing params', done => {
       app
-        .delete(`/api/v1/message/remove/${message2.id}`)
+        .delete(`/api/v1/message/${message2.id}`)
         .send(message2.id)
         .expect(422)
         .end(err => {
@@ -142,7 +142,7 @@ describe('Message', () => {
       messageAPI.deleteMessage = jest.fn()
       messageAPI.deleteMessage.mockReturnValue(message1)
       app
-        .delete(`/api/v1/message/remove/${message1.id}`)
+        .delete(`/api/v1/message/${message1.id}`)
         .send(message1)
         .expect(200)
         .end((err, res) => {

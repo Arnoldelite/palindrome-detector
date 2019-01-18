@@ -14,16 +14,15 @@ const app = express()
 export const router = express.Router()
 const jsonParser = bodyParser.json({ type: 'application/json' })
 
-console.log(process.env.PROD)
 const databaseURI = process.env.PROD
-  ? 'mongodb://shuttle-up:shuttle-up!0@ds127644.mlab.com:27644/shuttle-up'
+  ? 'mongodb://mongodb:27017/palindrome-detector'
   : 'mongodb://localhost:27017/palindrome-detector'
 
 export const parseConfig = {
   appId: 'myAppId',
   masterKey: 'myMasterKey',
   databaseURI,
-  serverURL: process.env.PROD ? `http://localhost:${port}/parse` : `http://localhost:${port}/parse`,
+  serverURL: `http://localhost:${port}/parse`,
 }
 
 const parseServer = new ParseServer({

@@ -6,3 +6,5 @@ logs
 false
 yarn.lock
 .DS_Store
+server/apidoc
+server/app

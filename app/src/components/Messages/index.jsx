@@ -26,18 +26,8 @@ class Messages extends React.Component {
             <List.Item
               key={item.objectId}
               actions={[
-                <Icon
-                  type="edit"
-                  style={{ color: '#08c' }}
-                  onClick={() => this.editMessage(item)}
-                  theme="outlined"
-                />,
-                <Icon
-                  type="delete"
-                  style={{ color: '#08c' }}
-                  onClick={() => remove(item)}
-                  theme="outlined"
-                />,
+                <Icon type="edit" onClick={() => this.editMessage(item)} theme="outlined" />,
+                <Icon type="delete" onClick={() => remove(item)} theme="outlined" />,
               ]}
             >
               <Skeleton title={false} loading={this.props.isLoading} active>
