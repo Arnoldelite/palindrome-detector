@@ -42,6 +42,12 @@ const parseDashboard = new ParseDashboard(
         appName: 'Palindrome Detector',
       },
     ],
+    users: [
+      {
+        user: 'bruce',
+        pass: 'wayne',
+      },
+    ],
   },
   { allowInsecureHTTP: true },
 )
