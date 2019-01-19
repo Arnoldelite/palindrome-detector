@@ -1,3 +1,3 @@
-eval $(docker-machine env arnold-palindrome)
+eval $(docker-machine env palindrome-detector)
 npm run build
 eval $(docker-machine env -u)
