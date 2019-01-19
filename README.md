@@ -1,8 +1,8 @@
 # Palindrome Detector
 
 - An application to store messages and detect palindromes.
-- Access deployed app on (Live App)[http://35.182.44.167/]
-- Access API Documentation app on (Api Documenation)[http://35.182.44.167/apidoc]
+- Access deployed app on (Live App)[http://35.183.127.191/]
+- Access API Documentation app on (Api Documenation)[http://35.183.127.191/apidoc]
 
 ## Depenedencies
 
