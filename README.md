@@ -33,4 +33,4 @@
 - Deploy to AWS EC2 docker machine `npm run deploy`
 
 ## Architecture Overview
-![Architecture Overview](https://github.com/Arnoldelite/palindrome-detector/blob/master/app/src/assets/palindrome%20proj%20architecture%20overview.png)
+![Architecture Overview](https://github.com/Arnoldelite/palindrome-detector/blob/master/app/src/assets/arch-overview.png)
