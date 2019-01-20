@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
-import { List, Skeleton, Icon } from 'antd'
+import { List, Skeleton, Icon, notification } from 'antd'
 import IsPalindrome from '../IsPalindrome'
 import { store } from '../..'
 import { remove, get } from '../../actions'
@@ -12,6 +12,15 @@ class Messages extends React.Component {
   async editMessage(item) {
     await get(item.objectId)
     store.showEditModal(true)
+  }
+
+  removeMessage(item) {
+    remove(item)
+    notification.open({
+      message: 'Message Deleted!',
+      description: item.content,
+      icon: <Icon type="delete" style={{ color: '#108ee9' }} />,
+    })
   }
 
   render() {
@@ -27,7 +36,7 @@ class Messages extends React.Component {
               key={item.objectId}
               actions={[
                 <Icon type="edit" onClick={() => this.editMessage(item)} theme="outlined" />,
-                <Icon type="delete" onClick={() => remove(item)} theme="outlined" />,
+                <Icon type="delete" onClick={() => this.removeMessage(item)} theme="outlined" />,
               ]}
             >
               <Skeleton title={false} loading={this.props.isLoading} active>

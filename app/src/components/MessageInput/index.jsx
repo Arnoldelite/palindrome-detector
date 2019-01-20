@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
-import { Input, Button } from 'antd'
+import { Input, Button, notification, Icon } from 'antd'
 import { store } from '../..'
 import { save, update } from '../../actions'
 import './style.scss'
@@ -22,8 +22,18 @@ class MessageInput extends React.Component {
       const { objectId, content } = this.state
       if (objectId) {
         update({ objectId, content })
+        notification.open({
+          message: 'Message Saved!',
+          description: content,
+          icon: <Icon type="save" style={{ color: '#108ee9' }} />,
+        })
       } else {
         save({ content })
+        notification.open({
+          message: 'Message Saved!',
+          description: content,
+          icon: <Icon type="save" style={{ color: '#108ee9' }} />,
+        })
       }
       store.showEditModal(false)
       this.setState({ objectId: null, content: '' })

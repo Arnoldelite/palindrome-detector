@@ -4,7 +4,7 @@
 - Access deployed app on (Live App)[http://35.183.127.191/]
 - Access API Documentation app on (Api Documenation)[http://35.183.127.191/apidoc]
 
-## Depenedencies
+## Dependencies
 
 - Docker
 - Node version >= 10
