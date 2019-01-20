@@ -25,14 +25,14 @@ class MessageInput extends React.Component {
         notification.open({
           message: 'Message Saved!',
           description: content,
-          icon: <Icon type="save" style={{ color: '#108ee9' }} />,
+          icon: <Icon type="save" theme="outlined" />,
         })
       } else {
         save({ content })
         notification.open({
           message: 'Message Saved!',
           description: content,
-          icon: <Icon type="save" style={{ color: '#108ee9' }} />,
+          icon: <Icon type="save" theme="outlined" />,
         })
       }
       store.showEditModal(false)

@@ -19,7 +19,7 @@ class Messages extends React.Component {
     notification.open({
       message: 'Message Deleted!',
       description: item.content,
-      icon: <Icon type="delete" style={{ color: '#108ee9' }} />,
+      icon: <Icon type="delete" theme="outlined" />,
     })
   }
 
