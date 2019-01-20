@@ -9,6 +9,13 @@ import './style.scss'
 
 @observer
 class Messages extends React.Component {
+  componentDidMount() {
+    notification.config({
+      placement: 'bottomRight',
+      duration: 2,
+    })
+  }
+
   async editMessage(item) {
     await get(item.objectId)
     store.showEditModal(true)

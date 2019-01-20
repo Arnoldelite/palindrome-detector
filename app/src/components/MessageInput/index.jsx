@@ -15,6 +15,10 @@ class MessageInput extends React.Component {
 
   componentDidMount() {
     this.setMessage(this.props.message)
+    notification.config({
+      placement: 'bottomRight',
+      duration: 2,
+    })
   }
 
   saveMessage() {
