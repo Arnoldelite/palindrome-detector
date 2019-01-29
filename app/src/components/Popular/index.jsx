@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { List, Skeleton, Icon, Avatar, Tag } from 'antd'
+import { List, Skeleton, Icon, Avatar, Tag, Badge } from 'antd'
 import Header from '../Header'
 import { store } from '../..'
 import ViewRepoModal from '../ViewRepoModal'
@@ -47,10 +47,11 @@ class Popular extends React.Component {
                   />,
                 ]}
               >
+                {item.has_issues && <Badge dot title="repo issues" offset={[25, 0]} />}
                 <Skeleton title={false} loading={store.isLoading} active>
                   <List.Item.Meta
                     avatar={<Avatar src={item.owner.avatar_url} />}
-                    title={<a href={item.html_url}>{item.full_name}</a>}
+                    title={<a href={item.html_url}>{item.name}</a>}
                   />
                   <Tag color="green">{item.language}</Tag>
                 </Skeleton>

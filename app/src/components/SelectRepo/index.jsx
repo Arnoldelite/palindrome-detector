@@ -36,6 +36,12 @@ class SelectRepo extends React.Component {
           <Option value="Java">Java</Option>
           <Option value="CSS">CSS</Option>
           <Option value="Python">Python</Option>
+          <Option value="C">C</Option>
+          <Option value="C++">C++</Option>
+          <Option value="Typescript">Typescript</Option>
+          <Option value="Python">Python</Option>
+          <Option value="Go">Go</Option>
+          <Option value="Dart">Dart</Option>
         </Select>
       </div>
     )
