@@ -1,7 +1,7 @@
 # Palindrome Detector
 
 - An application to store messages and detect palindromes.
-- Access deployed app on (Live App)[http://35.183.127.191/]
+- Access deployed app on (Live App)[http://35.183.127.191/app]
 - Access API Documentation app on (Api Documenation)[http://35.183.127.191/apidoc]
 
 ## Dependencies
@@ -33,4 +33,5 @@
 - Deploy to AWS EC2 docker machine `npm run deploy`
 
 ## Architecture Overview
+
 ![Architecture Overview](https://github.com/Arnoldelite/palindrome-detector/blob/master/app/src/assets/arch-overview.png)
