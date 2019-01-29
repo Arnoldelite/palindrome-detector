@@ -45,6 +45,21 @@ export async function list() {
   }
 }
 
+export async function listPopular(language) {
+  try {
+    store.setIsLoading(true)
+    const encodeURI = window.encodeURI(
+      `https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`,
+    )
+    const response = await axios.get(encodeURI)
+    store.setPopular(response.data.items)
+  } catch (e) {
+    apiError(e)
+  } finally {
+    store.setIsLoading(false)
+  }
+}
+
 export async function get(id) {
   try {
     const response = await axios.get(`/api/v1/message/${id}`)

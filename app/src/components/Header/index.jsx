@@ -1,15 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../../assets/batman-new.png'
 import './style.scss'
 
 const Header = () => (
   <div className="header">
     <div className="header__left">
-      <img className="logo" src={logo} alt="" />
-      <sup>wayne ent.</sup>
+      <Link to="/popular">
+        <img className="logo" src={logo} alt="" />
+        <sup className="darken">wayne ent.</sup>
+      </Link>
     </div>
     <div className="header__right">
-      <h3>Palindrome Detector</h3>
+      <Link to="/app">
+        <h3 className="darken">Palindrome Detector</h3>
+      </Link>
     </div>
   </div>
 )

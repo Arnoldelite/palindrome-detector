@@ -4,6 +4,12 @@ configure({ enforceActions: 'always' })
 
 export default class Store {
   @observable
+  popularRepos
+
+  @observable
+  repoInfo
+
+  @observable
   messages
 
   @observable
@@ -15,6 +21,9 @@ export default class Store {
   @observable
   isEditModalVisible
 
+  @observable
+  isViewRepoModalVisible
+
   constructor() {
     this.init()
   }
@@ -24,6 +33,13 @@ export default class Store {
     this.messages = observable.array([])
     this.isLoading = false
     this.messageInput = observable.object({})
+    this.popularRepos = observable.array([])
+    this.repoInfo = observable.object({})
+  }
+
+  @action
+  setPopular = repos => {
+    this.popularRepos = repos
   }
 
   @action
@@ -44,6 +60,16 @@ export default class Store {
   @action
   showEditModal = data => {
     this.isEditModalVisible = data
+  }
+
+  @action
+  showViewRepoModal = data => {
+    this.isViewRepoModalVisible = data
+  }
+
+  @action
+  viewRepoInfo = data => {
+    this.repoInfo = data
   }
 
   @action

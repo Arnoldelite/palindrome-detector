@@ -19,7 +19,7 @@
     "aws-staging": "chmod +x ./scripts/aws-staging.sh && ./scripts/aws-staging.sh",
     "build": "docker-compose kill && docker-compose up -d --build --remove-orphans",
     "deploy": "chmod +x ./deploy.sh && ./deploy.sh",
-    "open-browser": "npx opn http://localhost:3000",
+    "open-browser": "npx opn http://localhost:3000/app",
     "apidoc": "npx apidoc -i server/src/ -o server/apidoc/",
     "test": "npx jest --no-cache --coverage --detectOpenHandles",
     "test-watch": "npx jest --no-cache --detectOpenHandles --watchAll",
