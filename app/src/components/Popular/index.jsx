@@ -1,7 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { List, Skeleton, Icon, Avatar, Tag, Badge } from 'antd'
-import Header from '../Header'
+// import Header from '../Header'
 import { store } from '../..'
 import ViewRepoModal from '../ViewRepoModal'
 import SelectRepo from '../SelectRepo'
@@ -27,7 +27,7 @@ class Popular extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        {/* <Header /> */}
         <SelectRepo />
         <div className="message">
           <List
