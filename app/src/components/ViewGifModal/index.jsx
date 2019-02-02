@@ -8,34 +8,30 @@ import './style.scss'
 const { Meta } = Card
 
 @observer
-class ViewRepoModal extends React.Component {
+class ViewGifModal extends React.Component {
   render() {
     return (
       <Modal
         className="edit-modal"
         destroyOnClose
-        title={`${store.repoInfo.language} Popular Repo info`}
-        onCancel={() => store.showViewRepoModal(false)}
-        visible={store.isViewRepoModalVisible}
+        title={`${store.gifInfo.title}`}
+        onCancel={() => store.showViewGifModal(false)}
+        visible={store.isViewGifModalVisible}
         footer={null}
       >
         <Card
           hoverable
           style={{ width: 400 }}
+          cover={<img alt="gif" src={store.gifInfo.embed_url} />}
           actions={[
-            <Tag color="green"> stars: {store.repoInfo.stargazers_count}</Tag>,
-            <Tag color="green"> watchers: {store.repoInfo.watchers}</Tag>,
-            <Tag color="green"> issues: {store.repoInfo.open_issues}</Tag>,
+            <Tag color="green"> rating: {store.gifInfo.rating}</Tag>,
+            <Tag color="green"> score: {store.gifInfo.score}</Tag>,
           ]}
         >
           <Meta
-            avatar={
-              <Avatar
-                src={store.repoInfo.owner !== undefined ? store.repoInfo.owner.avatar_url : null}
-              />
-            }
-            title={<a href={store.repoInfo.html_url}>{store.repoInfo.full_name}</a>}
-            description={store.repoInfo.description}
+            avatar={<Avatar src={store.gifInfo.url !== undefined ? store.gifInfo.url : null} />}
+            title={<a href={store.gifInfo.url}>{store.gifInfo.title}</a>}
+            description={store.gifInfo.source}
           />
         </Card>
         <Particles
@@ -64,4 +60,4 @@ class ViewRepoModal extends React.Component {
   }
 }
 
-export default ViewRepoModal
+export default ViewGifModal

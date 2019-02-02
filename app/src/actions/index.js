@@ -60,6 +60,33 @@ export async function listPopular(language) {
   }
 }
 
+export async function listTrendingGifs() {
+  try {
+    store.setIsLoading(true)
+
+    const response = await axios({
+      method: 'get',
+      url: '/v1/gifs/trending',
+      baseURL: 'https://api.giphy.com',
+      responseType: 'json',
+      withCredentials: false,
+      // headers: {'X-Requested-With': 'XMLHttpRequest'},
+      params: {
+        api_key: 'dc6zaTOxFJmzC',
+        limit: 20,
+        offset: 50,
+        rating: 'g',
+        fmt: 'json',
+      },
+    })
+    store.setGifs(response.data.data)
+  } catch (e) {
+    apiError(e)
+  } finally {
+    store.setIsLoading(false)
+  }
+}
+
 export async function get(id) {
   try {
     const response = await axios.get(`/api/v1/message/${id}`)

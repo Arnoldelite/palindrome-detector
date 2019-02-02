@@ -7,7 +7,13 @@ export default class Store {
   popularRepos
 
   @observable
+  gifs
+
+  @observable
   repoInfo
+
+  @observable
+  gifInfo
 
   @observable
   messages
@@ -24,6 +30,9 @@ export default class Store {
   @observable
   isViewRepoModalVisible
 
+  @observable
+  isViewGifModalVisible
+
   constructor() {
     this.init()
   }
@@ -34,12 +43,20 @@ export default class Store {
     this.isLoading = false
     this.messageInput = observable.object({})
     this.popularRepos = observable.array([])
+    this.gifs = observable.array([])
     this.repoInfo = observable.object({})
+    this.gifInfo = observable.object({})
   }
 
   @action
   setPopular = repos => {
     this.popularRepos = repos
+  }
+
+  @action
+  setGifs = gifs => {
+    this.gifs = gifs
+    console.group('action >>', gifs)
   }
 
   @action
@@ -70,6 +87,16 @@ export default class Store {
   @action
   viewRepoInfo = data => {
     this.repoInfo = data
+  }
+
+  @action
+  showViewGifModal = data => {
+    this.isViewGifModalVisible = data
+  }
+
+  @action
+  viewGifInfo = data => {
+    this.gifInfo = data
   }
 
   @action

@@ -1,64 +1,62 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { List, Skeleton, Icon, Avatar, Tag, Badge } from 'antd'
-// import Header from '../Header'
 import { store } from '../..'
-import ViewRepoModal from '../ViewRepoModal'
+import ViewGifModal from '../ViewGifModal'
 import SelectRepo from '../SelectRepo'
 
-import { listPopular } from '../../actions'
+import { listTrendingGifs } from '../../actions'
 import './style.scss'
 
 @observer
-class Popular extends React.Component {
+class TrendingGifs extends React.Component {
   async componentDidMount() {
-    await listPopular('All')
+    await listTrendingGifs()
   }
 
-  viewRepo(item) {
-    store.viewRepoInfo(item)
-    store.showViewRepoModal(true)
+  viewGif(item) {
+    store.viewGifInfo(item)
+    store.showViewGifModal(true)
   }
 
   render() {
     return (
       <div>
-        {/* <Header /> */}
         <SelectRepo />
         <div className="message">
           <List
             className="message__list"
             loading={store.isLoading}
             itemLayout="horizontal"
-            dataSource={store.popularRepos}
+            dataSource={store.gifs}
             renderItem={item => (
               <List.Item
-                key={item.objectId}
+                key={item.id}
                 actions={[
                   <Icon
                     type="fire"
-                    onClick={() => this.viewRepo(item)}
+                    onClick={() => this.viewGif(item)}
                     theme="twoTone"
                     twoToneColor="green"
                   />,
                 ]}
               >
-                {item.has_issues && <Badge dot title="repo issues" offset={[25, 0]} />}
+                {/* {item.user.is_verified && <Badge dot title="user verified" offset={[25, 0]} />} */}
                 <Skeleton title={false} loading={store.isLoading} active>
                   <List.Item.Meta
-                    avatar={<Avatar src={item.owner.avatar_url} />}
-                    title={<a href={item.html_url}>{item.name}</a>}
+                    // avatar={<Avatar src={item.user.avatar_url} />}
+                    title={<a href={item.html_url}>{item.title}</a>}
                   />
-                  <Tag color="green">{item.language}</Tag>
+                  <Tag color="green">{item.type}</Tag>
                 </Skeleton>
               </List.Item>
             )}
           />
         </div>
-        <ViewRepoModal />{' '}
+        <ViewGifModal />{' '}
       </div>
     )
   }
 }
 
-export default Popular
+export default TrendingGifs

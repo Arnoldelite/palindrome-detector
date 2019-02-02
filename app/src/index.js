@@ -5,7 +5,7 @@ import { Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Store from './store'
 import App from './components/App'
-import Popular from './components/Popular'
+import Trend from './components/Trend'
 import 'antd/dist/antd.css'
 import './style/style.scss'
 
@@ -16,7 +16,7 @@ function Index() {
     <Provider store={store}>
       <Router>
         <div className="index">
-          <Route exact path="/popular" component={Popular} />
+          <Route exact path="/trending" component={Trend} />
           <Route path="/app" component={App} />
           {/* <Route path="/" component={App} /> */}
         </div>
