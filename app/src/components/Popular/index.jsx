@@ -2,6 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { List, Skeleton, Icon, Avatar, Tag, Badge } from 'antd'
 // import Header from '../Header'
+import Particles from 'react-particles-js'
 import { store } from '../..'
 import ViewRepoModal from '../ViewRepoModal'
 import SelectRepo from '../SelectRepo'
@@ -28,6 +29,52 @@ class Popular extends React.Component {
     return (
       <div>
         {/* <Header /> */}
+        <Particles
+          className="particles"
+          params={{
+            particles: {
+                number: {
+                    value: 90,
+                    density: {
+                        enable: true,
+                        value_area: 700,
+                    },
+                },
+                line_linked: {
+                    enable: true,
+                    opacity: 0.2,
+                },
+                move: {
+                    direction: "right",
+                    speed: 0.5,
+                },
+                size: {
+                    value: 1,
+                },
+                opacity: {
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        opacity_min: 0.5,
+                    },
+                },
+            },
+            interactivity: {
+                events: {
+                    onclick: {
+                        enable: true,
+                        mode: "push",
+                    },
+                },
+                modes: {
+                    push: {
+                        particles_nb: 1,
+                    },
+                },
+            },
+            retina_detect: true,
+        }}
+        />
         <SelectRepo />
         <div className="message">
           <List
@@ -60,6 +107,7 @@ class Popular extends React.Component {
           />
         </div>
         <ViewRepoModal />
+
       </div>
     )
   }

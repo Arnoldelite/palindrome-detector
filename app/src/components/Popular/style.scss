@@ -31,3 +31,14 @@
   margin: 20px;
   justify-content: center;
 }
+
+.particles {
+  z-index: -5;
+  background-color: #3333339c;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+}
