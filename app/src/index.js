@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'mobx-react'
+import remotedev from 'mobx-remotedev'
 // import { Router, Route } from 'react-router-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Store from './store'
@@ -8,8 +9,9 @@ import NavBar from './components/NavBar'
 // import Popular from './components/Popular'
 import 'antd/dist/antd.css'
 import './style/style.scss'
-
-export const store = new Store()
+// monitor actions with redux dev tools
+const rootStore = remotedev(Store)
+export const store = new rootStore()
 
 function Index() {
   return (

@@ -43,6 +43,7 @@
     "mobx": "^5.6.0",
     "mobx-react": "^5.4.2",
     "mobx-react-router": "^4.0.5",
+    "mobx-remotedev": "^0.3.6",
     "morgan": "^1.9.1",
     "parse": "^2.1.0",
     "parse-dashboard": "^1.2.0",

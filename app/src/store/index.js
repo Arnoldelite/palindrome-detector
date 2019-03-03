@@ -1,7 +1,6 @@
 import { observable, action, configure } from 'mobx'
 
 configure({ enforceActions: 'always' })
-
 export default class Store {
   @observable
   popularRepos
