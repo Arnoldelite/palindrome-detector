@@ -10,7 +10,7 @@ import NavBar from './components/NavBar'
 import 'antd/dist/antd.css'
 import './style/style.scss'
 // monitor actions with redux dev tools
-const rootStore = remotedev(Store)
+const rootStore = remotedev(Store, { name: 'Palindrome Store', global: true })
 export const store = new rootStore()
 
 function Index() {

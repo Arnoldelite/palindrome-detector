@@ -4,15 +4,28 @@
   "main": "index.js",
   "license": "MIT",
   "jest": {
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "collectCoverageFrom": [
+      "<rootDir>/app/src/**/*.{js}",
       "<rootDir>/server/src/**/*.{js}",
       "<rootDir>/server/index.js"
     ],
     "globalSetup": "<rootDir>/config/test-setup.js",
-    "globalTeardown": "<rootDir>/config/test-teardown.js"
+    "globalTeardown": "<rootDir>/config/test-teardown.js",
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest",
+      "^.+\\.(css|less|scss)$": "<rootDir>/config/jest/cssTransform.js",
+      "^.+\\.(bmp|gif|jpg|jpeg|png|psd|svg|webp)$": "<rootDir>/config/jest/fileTransform.js"
+    }
   },
   "scripts": {
     "mongodb": "docker-compose -f ./dev.yml kill && docker-compose -f ./dev.yml up -d --build --remove-orphans",
@@ -73,6 +86,8 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-import": "^1.11.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.11.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
