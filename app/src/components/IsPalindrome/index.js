@@ -6,7 +6,7 @@ const IsPalindrome = ({ isPalindrome }) => {
   if (isPalindrome) {
     return <Tag color="green">Palindrome</Tag>
   }
-  return <Tag color="pink">Not Palindrome</Tag>
+  return <Tag color="red">Not Palindrome</Tag>
 }
 
 IsPalindrome.propTypes = {
