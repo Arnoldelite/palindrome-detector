@@ -70,7 +70,8 @@
     "reqwest": "^2.0.5",
     "schm": "^0.4.1",
     "serve-static": "^1.13.2",
-    "shelljs": "^0.8.2"
+    "shelljs": "^0.8.2",
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",

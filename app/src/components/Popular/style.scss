@@ -1,4 +1,4 @@
-.message {
+.popular {
   width: 100%;
   margin: 10px;
   display: flex;
@@ -21,6 +21,19 @@
     .ant-spin-nested-loading {
       flex: 1;
     }
+    .ant-list-item-meta-title {
+      color: white;
+    }
+    .anticon {
+      color: white;
+    }
+    .ant-tag {
+      background-color: transparent;
+    }
+    .ant-list-item-content {
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 }
 
@@ -34,11 +47,16 @@
 
 .particles {
   z-index: -5;
-  background-color: rgba(51, 51, 51, 0.42);
+  background-color: rgba(51, 51, 51, 20.42);
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
   height: 100%;
+}
+
+.badge {
+  right: -4px;
+  top: -11px;
 }

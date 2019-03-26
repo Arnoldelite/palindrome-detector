@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { List, Skeleton, Icon, Avatar, Tag, Badge } from 'antd'
+import { List, Skeleton, Icon, Avatar, Tag, Badge, Button } from 'antd'
 // import Header from '../Header'
 import Particles from 'react-particles-js'
 import { store } from '../..'
@@ -25,60 +25,53 @@ class Popular extends React.Component {
     await listPopular(value.key)
   }
 
+  renderParticlesBackground = () => (
+    <Particles 
+      className="particles"
+      params={{
+                    particles: {
+                        shape: {
+                            type: 'images',
+                            images: [
+                                {src: 'assets/batman-new.svg', height: 20, width: 20},
+                            ],
+                        },
+                        number: {
+                            value: 50,
+                            density: {
+                                enable: true,
+                                value_area: 700,
+                            },
+                        },
+                        move: {
+                            direction: "right",
+                            speed: 0.7,
+                        },
+                        size: {
+                            value: 2,
+                        },
+                        opacity: {
+                            anim: {
+                                enable: true,
+                                speed: 2,
+                                opacity_min: 0.5,
+                            },
+                        },
+                    },
+                    retina_detect: true,
+                }}
+    />
+  )
+
   render() {
+    const renderParticles = this.renderParticlesBackground()
     return (
       <div>
-        {/* <Header /> */}
-        <Particles
-          className="particles"
-          params={{
-            particles: {
-                number: {
-                    value: 90,
-                    density: {
-                        enable: true,
-                        value_area: 700,
-                    },
-                },
-                line_linked: {
-                    enable: true,
-                    opacity: 0.2,
-                },
-                move: {
-                    direction: "right",
-                    speed: 0.5,
-                },
-                size: {
-                    value: 1,
-                },
-                opacity: {
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        opacity_min: 0.5,
-                    },
-                },
-            },
-            interactivity: {
-                events: {
-                    onclick: {
-                        enable: true,
-                        mode: "push",
-                    },
-                },
-                modes: {
-                    push: {
-                        particles_nb: 1,
-                    },
-                },
-            },
-            retina_detect: true,
-        }}
-        />
+        {renderParticles}
         <SelectRepo />
-        <div className="message">
+        <div className="popular">
           <List
-            className="message__list"
+            className="popular__list"
             loading={store.isLoading}
             itemLayout="horizontal"
             dataSource={store.popularRepos}
@@ -89,18 +82,21 @@ class Popular extends React.Component {
                   <Icon
                     type="fire"
                     onClick={() => this.viewRepo(item)}
-                    theme="twoTone"
-                    twoToneColor="green"
+                    theme="outlined"
                   />,
                 ]}
               >
-                {item.has_issues && <Badge dot title="repo issues" offset={[25, 0]} />}
+                {item.has_issues && <Badge className="badge" dot title="repo issues" offset={[25, 0]} />}
                 <Skeleton title={false} loading={store.isLoading} active>
                   <List.Item.Meta
                     avatar={<Avatar src={item.owner.avatar_url} />}
-                    title={<a href={item.html_url}>{item.name}</a>}
+                    title={(
+                      <div>
+                    <Button ghost href={item.html_url} > {item.name}</Button> 
+                      </div>
+                    )}
                   />
-                  <Tag color="green">{item.language}</Tag>
+                  <Tag color="green" href={item.html_url}>{item.language}</Tag>
                 </Skeleton>
               </List.Item>
             )}

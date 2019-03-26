@@ -29,11 +29,11 @@ class ViewRepoModal extends React.Component {
           ]}
         >
           <Meta
-            avatar={
-              <Avatar
-                src={store.repoInfo.owner !== undefined ? store.repoInfo.owner.avatar_url : null}
-              />
-            }
+            avatar={(
+<Avatar
+  src={store.repoInfo.owner !== undefined ? store.repoInfo.owner.avatar_url : null}
+/>
+)}
             title={<a href={store.repoInfo.html_url}>{store.repoInfo.full_name}</a>}
             description={store.repoInfo.description}
           />
@@ -48,6 +48,14 @@ class ViewRepoModal extends React.Component {
               size: {
                 value: 3,
               },
+              opacity: {
+                value: 0.5,
+                anim: {
+                    enable: true,
+                    speed: 2,
+                    opacity_min: 0.5,
+                },
+            },
             },
             interactivity: {
               events: {

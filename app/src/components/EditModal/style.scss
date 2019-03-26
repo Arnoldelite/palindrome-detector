@@ -3,11 +3,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity:0.8;
   }
   .ant-modal-close-x {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .ant-tag {
+    background-color: transparent;
   }
 }
 .particles {
@@ -18,4 +22,5 @@
   left: 0;
   bottom: 0;
   height: 100%;
+  opacity:0.7;
 }
