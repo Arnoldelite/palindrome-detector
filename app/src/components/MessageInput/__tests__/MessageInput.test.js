@@ -1,80 +1,25 @@
-import Parse from 'parse/node'
-import MessageInput from '../MessageInput'
+import React from 'react'
 
-const testParseServer = async () => {
-  Parse.initialize('appId', 'masterKey')
-  Parse.masterKey = 'masterKey'
-  Parse.serverURL = `http://localhost:1337/parse`
-}
+// import Parse from 'parse/node'
+import { shallow, configure } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import MessageInput from '..'
+import { shallowToJson } from 'enzyme-to-json'
+import '../../../../../config/jest/enzyme.config'
 
-const dropMessageTable = async () => {
-  const messageTable = new Parse.Schema('Message')
-  await messageTable.purge({ useMasterKey: true })
-}
+// import { expect } from 'chai';
+// import sinon from 'sinon';
 
-const testMessage = {
-  content: 'racecar',
-}
+// import MyComponent from './MyComponent'
+// import Foo from './Foo'
 
-const testMessage2 = {
-  content: 'Mom',
-}
-
-describe('User', () => {
-  beforeAll(async done => {
-    await testParseServer()
-    done()
+describe('<MessageInput />', () => {
+  beforeEach(() => {
+    configure({ adapter: new Adapter() })
   })
-  afterAll(async done => {
-    await dropMessageTable()
-    done()
-  })
-  beforeEach(async done => {
-    await dropMessageTable()
-    done()
+  test('renders <Header /> component', () => {
+    const wrapper = shallow(<MessageInput />)
+    expect(shallowToJson(wrapper)).toMatchSnapshot()
   })
 
-  describe('Messages', () => {
-    test('saveMessage', async done => {
-      const result = await message.saveMessage(testMessage)
-      expect(result.objectId).toBeTruthy()
-      expect(result.content).toEqual(testMessage.content)
-      expect(result.isPalindrome).toBeTruthy()
-      done()
-    })
-
-    test('getMessage', async done => {
-      const data = await message.saveMessage(testMessage)
-      const result = await message.getMessage(data.objectId)
-      expect(result.objectId).toBeTruthy()
-      expect(result.content).toEqual(testMessage.content)
-      expect(result.isPalindrome).toBeTruthy()
-      done()
-    })
-
-    test('updateMessage', async done => {
-      const data = await message.saveMessage(testMessage)
-      const result = await message.saveMessage({ ...data, content: 'qlik' })
-      expect(result.objectId).toEqual(data.objectId)
-      expect(result.content).toEqual('qlik')
-      expect(result.isPalindrome).toBeFalsy()
-      done()
-    })
-
-    test('getMessages', async done => {
-      await message.saveMessage(testMessage)
-      const result = await message.getMessages()
-      expect(result.length).toEqual(1)
-      expect(result[0].content).toEqual('racecar')
-      expect(result[0].isPalindrome).toBeTruthy()
-      done()
-    })
-
-    test('deleteMessage', async done => {
-      const data = await message.saveMessage(testMessage2)
-      const result = await message.deleteMessage(data.objectId)
-      expect(result.objectId).toEqual(data.objectId)
-      done()
-    })
-  })
 })

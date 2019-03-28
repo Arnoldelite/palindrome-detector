@@ -10,7 +10,32 @@ import './style.scss'
 
 @observer
 class EditModal extends React.Component {
+  renderParticlesBackground = () => (
+    <Particles
+      className="particles"
+      params={{
+      particles: {
+        number: {
+          value: 50,
+        },
+        size: {
+          value: 3,
+        },
+      },
+      interactivity: {
+        events: {
+          onhover: {
+            enable: true,
+            mode: 'repulse',
+          },
+        },
+      },
+    }}
+    />
+  )
+
   render() {
+    const renderParticles = this.renderParticlesBackground()
     return (
       <Modal
         className="edit-modal"
@@ -21,27 +46,7 @@ class EditModal extends React.Component {
         footer={null}
       >
         <MessageInput className="input" message={this.props.message} />
-        <Particles
-          className="particles"
-          params={{
-            particles: {
-              number: {
-                value: 50,
-              },
-              size: {
-                value: 3,
-              },
-            },
-            interactivity: {
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: 'repulse',
-                },
-              },
-            },
-          }}
-        />
+        {renderParticles}
       </Modal>
     )
   }

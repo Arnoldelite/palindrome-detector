@@ -2,6 +2,7 @@
   .ant-tabs-nav {
     margin: -3px;
   }
+
   .ant-tabs-nav-wrap {
     display: flex;
     flex-direction: row;
@@ -11,4 +12,15 @@
     justify-content: center;
     color: white;
   }
+}
+
+.particles {
+  z-index: -5;
+  background-color: rgba(51, 51, 51, 20.42);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
 }

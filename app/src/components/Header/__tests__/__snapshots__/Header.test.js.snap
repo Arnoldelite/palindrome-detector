@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders <Header /> component 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="header__left"
+  >
+    <Link
+      replace={false}
+      to="/popular"
+    >
+      <img
+        alt=""
+        className="logo"
+        src="batman-new.png"
+      />
+      <sup
+        className="darken"
+      >
+        wayne ent.
+      </sup>
+    </Link>
+  </div>
+  <div
+    className="header__right"
+  >
+    <Link
+      replace={false}
+      to="/app"
+    >
+      <h3
+        className="darken"
+      >
+        Palindrome Detector
+      </h3>
+    </Link>
+  </div>
+</div>
+`;

@@ -9,7 +9,41 @@ const { Meta } = Card
 
 @observer
 class ViewRepoModal extends React.Component {
+
+  renderParticlesBackground = () => (
+    <Particles
+      className="particles"
+      params={{
+      particles: {
+        number: {
+          value: 50,
+        },
+        size: {
+          value: 3,
+        },
+        opacity: {
+          value: 0.5,
+          anim: {
+              enable: true,
+              speed: 2,
+              opacity_min: 0.5,
+          },
+      },
+      },
+      interactivity: {
+        events: {
+          onhover: {
+            enable: true,
+            mode: 'repulse',
+          },
+        },
+      },
+    }}
+    />
+  )
+
   render() {
+    const renderParticles = this.renderParticlesBackground()
     return (
       <Modal
         className="edit-modal"
@@ -38,35 +72,7 @@ class ViewRepoModal extends React.Component {
             description={store.repoInfo.description}
           />
         </Card>
-        <Particles
-          className="particles"
-          params={{
-            particles: {
-              number: {
-                value: 50,
-              },
-              size: {
-                value: 3,
-              },
-              opacity: {
-                value: 0.5,
-                anim: {
-                    enable: true,
-                    speed: 2,
-                    opacity_min: 0.5,
-                },
-            },
-            },
-            interactivity: {
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: 'repulse',
-                },
-              },
-            },
-          }}
-        />
+        {renderParticles}
       </Modal>
     )
   }

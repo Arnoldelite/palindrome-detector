@@ -1,8 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { List, Skeleton, Icon, Avatar, Tag, Badge, Button } from 'antd'
-// import Header from '../Header'
-import Particles from 'react-particles-js'
 import { store } from '../..'
 import ViewRepoModal from '../ViewRepoModal'
 import SelectRepo from '../SelectRepo'
@@ -25,49 +23,9 @@ class Popular extends React.Component {
     await listPopular(value.key)
   }
 
-  renderParticlesBackground = () => (
-    <Particles 
-      className="particles"
-      params={{
-                    particles: {
-                        shape: {
-                            type: 'images',
-                            images: [
-                                {src: 'assets/batman-new.svg', height: 20, width: 20},
-                            ],
-                        },
-                        number: {
-                            value: 50,
-                            density: {
-                                enable: true,
-                                value_area: 700,
-                            },
-                        },
-                        move: {
-                            direction: "right",
-                            speed: 0.7,
-                        },
-                        size: {
-                            value: 2,
-                        },
-                        opacity: {
-                            anim: {
-                                enable: true,
-                                speed: 2,
-                                opacity_min: 0.5,
-                            },
-                        },
-                    },
-                    retina_detect: true,
-                }}
-    />
-  )
-
   render() {
-    const renderParticles = this.renderParticlesBackground()
     return (
       <div>
-        {renderParticles}
         <SelectRepo />
         <div className="popular">
           <List
@@ -103,7 +61,6 @@ class Popular extends React.Component {
           />
         </div>
         <ViewRepoModal />
-
       </div>
     )
   }
