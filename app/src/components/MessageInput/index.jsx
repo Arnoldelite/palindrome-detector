@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
-import { Input, Button, notification, Icon } from 'antd'
+import { Input, Button, notification, Icon, Tooltip } from 'antd'
 import { store } from '../..'
 import { save, update } from '../../actions'
 import './style.scss'
@@ -47,27 +47,30 @@ class MessageInput extends React.Component {
   setMessage = message => this.setState(message)
 
   render() {
+    const selectText = 'enter word or phrase to be checked'
     return (
-      <div className="message-input">
-        <Input
-          placeholder="Enter message"
-          size="large"
-          value={this.state.content}
-          onChange={e => this.setMessage({ content: e.target.value })}
-          onPressEnter={() => this.saveMessage()}
-        />
-
-        {this.state.content && (
-          <Button
+      <Tooltip placement="bottom" title={selectText}>
+        <div className="message-input">
+          <Input
+            placeholder="Enter message"
             size="large"
-            className="message-input__save"
-            type="primary"
-            onClick={() => this.saveMessage()}
-          >
-            Save
-          </Button>
-        )}
-      </div>
+            value={this.state.content}
+            onChange={e => this.setMessage({ content: e.target.value })}
+            onPressEnter={() => this.saveMessage()}
+          />
+
+          {this.state.content && (
+            <Button
+              size="large"
+              className="message-input__save"
+              type="primary"
+              onClick={() => this.saveMessage()}
+            >
+              Save
+            </Button>
+          )}
+        </div>
+      </Tooltip>
     )
   }
 }

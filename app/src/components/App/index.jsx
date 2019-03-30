@@ -15,10 +15,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="app">     
+      <div className="app">
         <MessageInput />
         <Messages messages={store.messages} isLoading={store.isLoading} />
-        <EditModal message={store.messageInput} /> 
+        <EditModal message={store.messageInput} />
       </div>
     )
   }

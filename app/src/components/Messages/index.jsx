@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
-import { List, Skeleton, Icon, notification } from 'antd'
+import { List, Skeleton, Icon, notification, Tooltip } from 'antd'
 import IsPalindrome from '../IsPalindrome'
 import { store } from '../..'
 import { remove, get } from '../../actions'
@@ -31,6 +31,8 @@ class Messages extends React.Component {
   }
 
   render() {
+    const editText = 'edit word / phrase'
+    const deleteText = 'delete text'
     return (
       <div className="message">
         <List
@@ -42,8 +44,12 @@ class Messages extends React.Component {
             <List.Item
               key={item.objectId}
               actions={[
-                <Icon type="edit" onClick={() => this.editMessage(item)} theme="outlined" />,
-                <Icon type="delete" onClick={() => this.removeMessage(item)} theme="outlined" />,
+                <Tooltip placement="bottom" title={editText}>
+                  <Icon type="edit" onClick={() => this.editMessage(item)} theme="outlined" />
+                </Tooltip>,
+                <Tooltip placement="bottom" title={deleteText}>
+                  <Icon type="delete" onClick={() => this.removeMessage(item)} theme="outlined" />
+                </Tooltip>,
               ]}
             >
               <Skeleton title={false} loading={this.props.isLoading} active>

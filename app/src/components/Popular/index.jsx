@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { List, Skeleton, Icon, Avatar, Tag, Badge, Button } from 'antd'
+import { List, Skeleton, Icon, Avatar, Tag, Badge, Button, Tooltip } from 'antd'
 import { store } from '../..'
 import ViewRepoModal from '../ViewRepoModal'
 import SelectRepo from '../SelectRepo'
@@ -24,6 +24,9 @@ class Popular extends React.Component {
   }
 
   render() {
+    const languageText = 'programming language'
+    const iconText = 'repository information'
+    const buttonText = 'jump to repository on github'
     return (
       <div>
         <SelectRepo />
@@ -37,24 +40,33 @@ class Popular extends React.Component {
               <List.Item
                 key={item.objectId}
                 actions={[
-                  <Icon
-                    type="fire"
-                    onClick={() => this.viewRepo(item)}
-                    theme="outlined"
-                  />,
+                  <Tooltip placement="bottom" title={iconText}>
+                    <Icon type="fire" onClick={() => this.viewRepo(item)} theme="outlined" />
+                  </Tooltip>,
                 ]}
               >
-                {item.has_issues && <Badge className="badge" dot title="repo issues" offset={[25, 0]} />}
+                {item.has_issues && (
+                  <Badge className="badge" dot title="repo issues" offset={[25, 0]} />
+                )}
                 <Skeleton title={false} loading={store.isLoading} active>
                   <List.Item.Meta
                     avatar={<Avatar src={item.owner.avatar_url} />}
-                    title={(
+                    title={
                       <div>
-                    <Button ghost href={item.html_url} > {item.name}</Button> 
+                        <Tooltip placement="bottom" title={buttonText}>
+                          <Button ghost href={item.html_url}>
+                            {' '}
+                            {item.name}
+                          </Button>
+                        </Tooltip>
                       </div>
-                    )}
+                    }
                   />
-                  <Tag color="green" href={item.html_url}>{item.language}</Tag>
+                  <Tooltip placement="bottom" title={languageText}>
+                    <Tag color="green" href={item.html_url}>
+                      {item.language}
+                    </Tag>
+                  </Tooltip>
                 </Skeleton>
               </List.Item>
             )}

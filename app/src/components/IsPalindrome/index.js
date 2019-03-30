@@ -1,12 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Tag } from 'antd'
+import { Tag, Tooltip } from 'antd'
 
 const IsPalindrome = ({ isPalindrome }) => {
+  const tagText = 'palindrome status'
   if (isPalindrome) {
-    return <Tag color="green">Palindrome</Tag>
+    return (
+      <Tooltip placement="bottom" title={tagText}>
+        <Tag color="green">Palindrome</Tag>
+      </Tooltip>
+    )
   }
-  return <Tag color="red">Not Palindrome</Tag>
+  return (
+    <Tooltip placement="bottom" title={tagText}>
+      <Tag color="red">Palindrome</Tag>
+    </Tooltip>
+  )
 }
 
 IsPalindrome.propTypes = {
