@@ -14,7 +14,7 @@ exports[`<Header /> renders <Header /> component 1`] = `
       <img
         alt=""
         className="logo"
-        src="batman-new.png"
+        src="test-file-stub"
       />
       <sup
         className="darken"

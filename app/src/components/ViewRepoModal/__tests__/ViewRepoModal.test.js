@@ -3,7 +3,7 @@ import React from 'react'
 // import Parse from 'parse/node'
 import { shallow } from 'enzyme'
 
-import Header from '..'
+import ViewRepoModal from '..'
 // import { expect } from 'chai';
 // import sinon from 'sinon';
 
@@ -11,8 +11,8 @@ import Header from '..'
 // import Foo from './Foo'
 
 describe('<MyComponent />', () => {
-  test('renders <Header /> component', () => {
-    const wrapper = shallow(<Header />)
+  test('renders <ViewRepoModal /> component', () => {
+    const wrapper = shallow(<ViewRepoModal />)
     expect(wrapper).toMatchSnapshot()
   })
 
