@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MessageInput /> renders <Header /> component 1`] = `
+<Tooltip
+  arrowPointAtCenter={false}
+  autoAdjustOverflow={true}
+  mouseEnterDelay={0.1}
+  mouseLeaveDelay={0.1}
+  placement="bottom"
+  title="enter word or phrase to be checked"
+  transitionName="zoom-big-fast"
+>
+  <div
+    className="message-input"
+  >
+    <Input
+      disabled={false}
+      onChange={[Function]}
+      onPressEnter={[Function]}
+      placeholder="Enter message"
+      size="large"
+      type="text"
+      value=""
+    />
+  </div>
+</Tooltip>
+`;

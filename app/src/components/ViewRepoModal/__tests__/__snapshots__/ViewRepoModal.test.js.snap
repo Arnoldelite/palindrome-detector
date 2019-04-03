@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MyComponent /> renders <ViewRepoModal /> component 1`] = `
+<Modal
+  cancelButtonDisabled={false}
+  className="edit-modal"
+  confirmLoading={false}
+  destroyOnClose={true}
+  footer={null}
+  maskTransitionName="fade"
+  okButtonDisabled={false}
+  okType="primary"
+  onCancel={[Function]}
+  title="undefined Popular Repo info"
+  transitionName="zoom"
+  visible={false}
+  width={520}
+>
+  <Card
+    actions={
+      Array [
+        <Tag
+          closable={false}
+          color="green"
+        >
+           stars: 
+        </Tag>,
+        <Tag
+          closable={false}
+          color="green"
+        >
+           watchers: 
+        </Tag>,
+        <Tag
+          closable={false}
+          color="green"
+        >
+           issues: 
+        </Tag>,
+      ]
+    }
+    hoverable={true}
+    style={
+      Object {
+        "width": 400,
+      }
+    }
+  >
+    <_default
+      avatar={
+        <Avatar
+          shape="circle"
+          size="default"
+          src={null}
+        />
+      }
+      title={<a />}
+    />
+  </Card>
+  <t
+    className="particles"
+    height="100%"
+    params={
+      Object {
+        "interactivity": Object {
+          "events": Object {
+            "onhover": Object {
+              "enable": true,
+              "mode": "repulse",
+            },
+          },
+        },
+        "particles": Object {
+          "number": Object {
+            "value": 50,
+          },
+          "opacity": Object {
+            "anim": Object {
+              "enable": true,
+              "opacity_min": 0.5,
+              "speed": 2,
+            },
+            "value": 0.5,
+          },
+          "size": Object {
+            "value": 3,
+          },
+        },
+      }
+    }
+    style={Object {}}
+    width="100%"
+  />
+</Modal>
+`;

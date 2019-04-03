@@ -1,12 +1,11 @@
 import React from 'react'
 
 // import Parse from 'parse/node'
-import { shallow, configure } from 'enzyme'
+import { shallow } from 'enzyme'
 // import Adapter from 'enzyme-adapter-react-16'
 import Header from '..'
 import { shallowToJson } from 'enzyme-to-json'
 import '../../../../../config/jest/enzyme.config'
-
 
 // import { expect } from 'chai';
 // import sinon from 'sinon';
@@ -22,5 +21,4 @@ describe('<Header />', () => {
     const wrapper = shallow(<Header />)
     expect(shallowToJson(wrapper)).toMatchSnapshot()
   })
-
 })

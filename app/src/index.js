@@ -27,7 +27,7 @@ function Index() {
   )
 }
 
-ReactDOM.render(<Index />, document.getElementById('root'))
+ReactDOM.render(<Index />, document.getElementById('root') || document.createElement('div'))
 
 // Hot Module Replacement
 if (module.hot) {
