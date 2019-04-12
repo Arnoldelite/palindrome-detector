@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MessageInput /> renders <Header /> component 1`] = `
+exports[`<MessageInput /> renders <MessageInput /> component 1`] = `
 <Tooltip
   arrowPointAtCenter={false}
   autoAdjustOverflow={true}
