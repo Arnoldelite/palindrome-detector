@@ -4,6 +4,7 @@ import { observer } from 'mobx-react'
 import Particles from 'react-particles-js'
 import { store } from '../..'
 import './style.scss'
+import Withline from '../WithLine';
 
 const { Meta } = Card
 
@@ -55,7 +56,7 @@ class ViewRepoModal extends React.Component {
       >
         <Card
           hoverable
-          style={{ width: 400 }}
+          style={{ width: 600 }}
           actions={[
             <Tag color="green"> stars: {store.repoInfo.stargazers_count}</Tag>,
             <Tag color="green"> watchers: {store.repoInfo.watchers}</Tag>,
@@ -71,6 +72,7 @@ class ViewRepoModal extends React.Component {
             title={<a href={store.repoInfo.html_url}>{store.repoInfo.full_name}</a>}
             description={store.repoInfo.description}
           />
+          <Withline/>
         </Card>
         {renderParticles}
       </Modal>

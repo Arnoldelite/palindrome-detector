@@ -49,11 +49,15 @@
     "start": "run-s mongodb dev"
   },
   "dependencies": {
+    "@antv/data-set": "^0.10.2",
     "antd": "^3.11.6",
     "antd-mobile": "^2.2.8",
     "axios": "^0.18.0",
+    "bizcharts": "^3.5.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "enzyme-to-json": "^3.3.5",
     "express": "^4.16.3",
     "express-validator": "^5.3.0",
@@ -77,9 +81,7 @@
     "schm": "^0.4.1",
     "serve-static": "^1.13.2",
     "shelljs": "^0.8.2",
-    "toastr": "^2.1.4",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.2"
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",

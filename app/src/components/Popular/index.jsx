@@ -51,16 +51,16 @@ class Popular extends React.Component {
                 <Skeleton title={false} loading={store.isLoading} active>
                   <List.Item.Meta
                     avatar={<Avatar src={item.owner.avatar_url} />}
-                    title={
-                      <div>
+                    title={(
+<div>
                         <Tooltip placement="bottom" title={buttonText}>
                           <Button ghost href={item.html_url}>
                             {' '}
                             {item.name}
                           </Button>
                         </Tooltip>
-                      </div>
-                    }
+</div>
+)}
                   />
                   <Tooltip placement="bottom" title={languageText}>
                     <Tag color="green" href={item.html_url}>
