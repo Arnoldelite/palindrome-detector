@@ -42,7 +42,7 @@ exports[`<MyComponent /> renders <ViewRepoModal /> component 1`] = `
     hoverable={true}
     style={
       Object {
-        "width": 400,
+        "width": 600,
       }
     }
   >
@@ -56,6 +56,7 @@ exports[`<MyComponent /> renders <ViewRepoModal /> component 1`] = `
       }
       title={<a />}
     />
+    <Withline />
   </Card>
   <t
     className="particles"
