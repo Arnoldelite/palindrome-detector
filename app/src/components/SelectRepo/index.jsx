@@ -50,6 +50,7 @@ class SelectRepo extends React.Component {
             <Option value="Kotlin">Kotlin</Option>
             <Option value="Scala">Scala</Option>
             <Option value="Crystal">Crystal</Option>
+            <Option value="Elixir">Elixir</Option>
           </Select>
         </div>
       </Tooltip>
