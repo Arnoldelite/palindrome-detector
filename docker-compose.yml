@@ -1,17 +1,17 @@
 ##########################################################################
 #                           Palindrome-Detector                          #
 ##########################################################################
-version: "3"
+version: '3'
 services:
   mongodb:
     restart: always
-    image: "mongo:latest"
+    image: 'mongo:latest'
     environment:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
     ports:
       - 27017:27017
-    command: mongod --smallfiles --logpath=/dev/null
+    command: mongod --logpath=/dev/null
   app:
     build:
       context: .

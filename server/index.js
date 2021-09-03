@@ -6,8 +6,11 @@ import path from 'path'
 import serveStatic from 'serve-static'
 import messageRoutes from './src/routes/message-routes'
 
+
 const ParseServer = require('parse-server').ParseServer
 const ParseDashboard = require('parse-dashboard')
+const tweetHandler = require('./src/listing/tweet-handler');
+
 
 export const port = process.env.PORT ? process.env.PORT : 3000
 const app = express()
@@ -70,7 +73,10 @@ app.use('/apidoc', serveStatic('./server/apidoc/'))
 
 // Routes
 app.use('/', messageRoutes)
+// define twitter api
+app.get('/api/tweets', tweetHandler);
 app.get('/app', (_, res) => res.sendFile(path.join(`${__dirname}/app/index.html`)))
 app.get('*', (_, res) => res.sendFile(path.join(`${__dirname}/app/index.html`)))
+
 
 export default app

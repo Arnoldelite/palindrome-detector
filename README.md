@@ -31,6 +31,7 @@
 - Sign up for AWS and configure credentials [https://docs.docker.com/machine/examples/aws/]
 - Create docker machine `docker-machine create --driver amazonec2 --amazonec2-open-port 80 --amazonec2-region ca-central-1 palindrome-detector`
 - Deploy to AWS EC2 docker machine `npm run deploy`
+- App accessible on (Prod)[http://3.96.126.192/popular]
 
 ## Architecture Overview
 

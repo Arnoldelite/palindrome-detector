@@ -4,6 +4,8 @@ import { Provider } from 'mobx-react'
 import remotedev from 'mobx-remotedev'
 // import { Router, Route } from 'react-router-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import Store from './store'
 import NavBar from './components/NavBar'
 // import Popular from './components/Popular'
@@ -27,7 +29,10 @@ function Index() {
   )
 }
 
-ReactDOM.render(<Index />, document.getElementById('root') || document.createElement('div'))
+
+ReactDOM.render(<DndProvider backend={HTML5Backend}>
+  <Index />
+                </DndProvider>, document.getElementById('root') || document.createElement('div'))
 
 // Hot Module Replacement
 if (module.hot) {

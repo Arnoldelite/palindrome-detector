@@ -5,6 +5,9 @@ import Particles from 'react-particles-js'
 import Header from '../Header'
 import App from '../App'
 import Popular from '../Popular'
+import NoteList from '../NoteList'
+import TweetList from '../TweetList';
+
 
 import { listPopular } from '../../actions'
 import './style.scss'
@@ -64,6 +67,8 @@ class NavBar extends React.Component {
     const renderParticles = this.renderParticlesBackground()
     const appText = 'check words/phrases for palindromes'
     const popularText = 'browse popular github repositories by language'
+    const noteText = 'Take notes'
+    const tweetText = 'Search for tweet'
     return (
       <div className="tab-bar">
         <Header />
@@ -76,6 +81,16 @@ class NavBar extends React.Component {
           <TabPane tab="Popular Repos" key="2">
             <Tooltip placement="bottom" title={popularText}>
               <Popular />
+            </Tooltip>
+          </TabPane>
+          <TabPane tab="Notes" key="3">
+            <Tooltip placement="bottom" title={noteText}>
+            <NoteList/>
+            </Tooltip>
+          </TabPane>
+          <TabPane tab="Tweet Search" key="4">
+            <Tooltip placement="bottom" title={tweetText}>
+            <TweetList/>
             </Tooltip>
           </TabPane>
         </Tabs>
