@@ -1,8 +1,24 @@
 import Parse from 'parse/node'
 import { errorMessage } from '../utils/errorUtils'
+// import { parseConfig } from '../../server'
+// export const port = process.env.PORT ? process.env.PORT : 3000
+
+// const databaseURI = process.env.PROD
+//   ? 'mongodb://mongodb:27017/palindrome-detector'
+//   : 'mongodb://localhost:27017/palindrome-detector'
+
+// export const parseConfig = {
+//   appId: 'myAppId',
+//   masterKey: 'myMasterKey',
+//   databaseURI,
+//   serverURL: `http://localhost:${port}/parse`,
+// }
+
+// Parse.initialize(parseConfig.appId, parseConfig.master);
 
 export class Message {
   query() {
+
     return new Parse.Query(Parse.Object.extend('Message'))
   }
 

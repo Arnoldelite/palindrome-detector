@@ -7,6 +7,7 @@ import App from '../App'
 import Popular from '../Popular'
 import NoteList from '../NoteList'
 import TweetList from '../TweetList';
+import OrderBook from '../Coinbase/OrderBook';
 
 
 import { listPopular } from '../../actions'
@@ -91,6 +92,13 @@ class NavBar extends React.Component {
           <TabPane tab="Tweet Search" key="4">
             <Tooltip placement="bottom" title={tweetText}>
             <TweetList/>
+            </Tooltip>
+          </TabPane>
+          <TabPane tab="Coinbase" key="5">
+            <Tooltip placement="bottom" title={tweetText}>
+            <div className="App">
+              <OrderBook/>
+            </div>
             </Tooltip>
           </TabPane>
         </Tabs>

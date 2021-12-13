@@ -3,14 +3,13 @@ import morgan from 'morgan'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import path from 'path'
+import Parse from 'parse/node'
 import serveStatic from 'serve-static'
 import messageRoutes from './src/routes/message-routes'
-
 
 const ParseServer = require('parse-server').ParseServer
 const ParseDashboard = require('parse-dashboard')
 const tweetHandler = require('./src/listing/tweet-handler');
-
 
 export const port = process.env.PORT ? process.env.PORT : 3000
 const app = express()
@@ -25,8 +24,11 @@ export const parseConfig = {
   appId: 'myAppId',
   masterKey: 'myMasterKey',
   databaseURI,
-  serverURL: `http://localhost:${port}/parse`,
+  serverURL: `http://localhost:${port}/parse/`,
 }
+
+Parse.initialize(parseConfig.appId, parseConfig.master);
+Parse.serverURL = parseConfig.serverURL;
 
 const parseServer = new ParseServer({
   databaseURI,
