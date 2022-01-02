@@ -33,7 +33,7 @@
   "dependencies": {
     "antd": "^3.11.6",
     "antd-mobile": "^2.2.8",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
