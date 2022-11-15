@@ -8,7 +8,7 @@ WORKDIR /project
 COPY . /project
 COPY ./package.json /package.json
 
-RUN npm ci --silent
+RUN npm ci --force
 RUN npm run build-app
 RUN npm run apidoc
 
